@@ -11,11 +11,11 @@ By the end of this training, students will be able to:
 - Develop and consume **services (HttpClient, observables, JWT, AuthGuard)**  
 - Organize and maintain a complete Angular application  
 
-### 📦 Repository Structure  
-- `/cours` → theoretical supports and presentations  
-- `/ateliers` → workshop assignments (10 in total)  
+### 📦 Repository content 
+- `/courses` → theoretical supports and presentations  
+- `/workshops` → workshop assignments (10 in total)  
 - `/solutions` → solutions and code examples  
-- `/ressources` → complementary documentation, Git/Angular command summaries  
+- `/resources` → complementary documentation, Git/Angular command summaries  
 
 ### 🛠️ Prerequisites  
 - Algorithm 1  

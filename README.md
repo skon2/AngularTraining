@@ -1,6 +1,6 @@
 # 🛠️ Workshop 1 – Environment Setup (Angular 18)
 
-This branch corresponds to **Workshop n°1: Mise en place de l’environnement** of the module *Application côté client 1* at **ESPRIT School of Engineering**.
+This branch corresponds to **Workshop n°1: Environment Setup ** of the module *Application côté client 1* at **ESPRIT School of Engineering**.
 
 ---
 

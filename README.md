@@ -1,4 +1,4 @@
-#Angular Training
+# 📚  Angular Training
 This repository gathers pedagogical and practical resources related to the **Client-Side Application 1** module (Front-End Development – TWIN Option).  
 
 ### 🎯 Module Objectives  
@@ -21,9 +21,9 @@ By the end of this training, students will be able to:
 - Algorithm 1  
 - Web Technology 1.0  
 
-### 👨‍🏫 Teaching Team  
-- **Module Coordinator**: Ameni Rommene  
-- **Instructors**: Ameni Rommene, Badiaa Bouhdid, Radhouene Messaoudi, Safa Saoudi, Nader Abdellaoui  
+### 👨‍🏫 Instructor 
+- **[Badia Bouhdid](https://www.linkedin.com/in/badiabouhdid)**
+
 
 ### 📖 Useful References  
 - [Official Angular Documentation](https://angular.io/docs)  

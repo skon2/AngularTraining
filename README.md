@@ -1,4 +1,7 @@
 # 🛠️ Workshop 1 – Environment Setup (Angular 18)
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Angular_Logo_SVG.svg/768px-Angular_Logo_SVG.svg.png?20231112001847" alt="Angular Logo" width="120"/>
+</p>
 
 This branch corresponds to **Workshop n°1: Environment Setup **
 
@@ -100,7 +103,8 @@ ng serve --open
 ### 👨‍🏫 Instructor
 - **[Badia Bouhdid](https://www.linkedin.com/in/badiabouhdid)**
 
+🏫 This training is delivered as part of the **Client-Side Application 1** module at [Esprit School of Engineering](https://www.esprit.tn)
 
-### 📖 Useful References
-- [Official Angular Documentation](https://angular.io/docs)
-- [Angular Wishtack Guide](https://guide-angular.wishtack.io/)  
+
+
+

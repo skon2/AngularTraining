@@ -97,6 +97,10 @@ ng serve --open
 | `ng serve --open`                      | Start dev server and open browser      | Faster startup |
 
 ---
+### 👨‍🏫 Instructor
+- **[Badia Bouhdid](https://www.linkedin.com/in/badiabouhdid)**
 
-🏫 This workshop is part of the **Application côté client 1** module at Esprit School of Engineering
 
+### 📖 Useful References
+- [Official Angular Documentation](https://angular.io/docs)
+- [Angular Wishtack Guide](https://guide-angular.wishtack.io/)  

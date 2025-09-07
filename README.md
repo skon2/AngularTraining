@@ -1,40 +1,102 @@
-# 📚  Angular Training
-This repository gathers pedagogical and practical resources related to the **Client-Side Application 1** module (Front-End Development – TWIN Option).  
+# 🛠️ Workshop 1 – Environment Setup (Angular 18)
 
-### 🎯 Module Objectives  
-By the end of this training, students will be able to:  
-- Identify and manipulate the basics of a **Frontend application**  
-- Explain and implement **Angular architecture**  
-- Manage **navigation and routing**  
-- Build and validate **forms**  
-- Create **interactions between components**  
-- Develop and consume **services (HttpClient, observables, JWT, AuthGuard)**  
-- Organize and maintain a complete Angular application  
-
-### 📦 Repository content 
-- `/courses` → theoretical supports and presentations  
-- `/workshops` → workshop assignments (10 in total)  
-- `/solutions` → solutions and code examples  
-- `/resources` → complementary documentation, Git/Angular command summaries  
-
-### 🛠️ Prerequisites  
-- Algorithm 1  
-- Web Technology 1.0  
-
-### 👨‍🏫 Instructor 
-- **[Badia Bouhdid](https://www.linkedin.com/in/badiabouhdid)**
-
-
-### 📖 Useful References  
-- [Official Angular Documentation](https://angular.io/docs)  
-- [Angular Wishtack Guide](https://guide-angular.wishtack.io/)  
+This branch corresponds to **Workshop n°1: Mise en place de l’environnement** of the module *Application côté client 1* at **ESPRIT School of Engineering**.
 
 ---
 
-🏫 This training is delivered as part of the **Client-Side Application 1** module at [Esprit School of Engineering](https://www.esprit.tn)
+## 🎯 Objectives
+- Install the working environment required for **Angular 18**.  
+- Create a new Angular project (Standalone or Modular).  
+- Understand the possible configurations of an Angular project.  
 
+---
 
+## 📦 Steps to Install the Environment
 
-  
+1. **Install Node.js**  
+   - Download from [https://nodejs.org/en/](https://nodejs.org/en/).  
+   - Minimum: `v18.13.0`  
+   - Recommended: `v20.x.x (LTS)`  
+   - Verify installation:  
+     ```bash
+     node -v
+     npm -v
+     ```
 
+2. **Install Angular CLI v18**  
+   ```bash
+   npm install -g @angular/cli@18
+   ng version
+   ```
+
+3. **Install an IDE**  
+   - Recommended: *Visual Studio Code* or *WebStorm*.  
+
+4. **Create a workspace folder**  
+   Example:  
+   ```bash
+   mkdir Angular_Workspace
+   cd Angular_Workspace
+   ```
+
+---
+
+## 🚀 Create a New Angular Project
+
+### ▶️ 100% Standalone Project
+```bash
+ng new projectName
+cd projectName
+ng serve --open
+```
+
+- **Characteristics**:  
+  - No `AppModule`.  
+  - All components are standalone.  
+- **Best for**: small projects, prototypes, SPAs, experimentation.  
+
+---
+
+### ▶️ Modular Project (NgModule)
+```bash
+ng new projectName --standalone=false
+cd projectName
+ng serve --open
+```
+
+- **Characteristics**:  
+  - Uses `AppModule` and other modules.  
+  - Can include standalone components.  
+- **Best for**: large projects, enterprise apps, complex routing.  
+
+---
+
+## 📊 Choosing Between Standalone vs Modular
+
+| Project Type                          | Recommended Approach |
+|---------------------------------------|-----------------------|
+| Small project / quick prototype       | 100% Standalone       |
+| Simple SPA                            | Standalone or light Modular |
+| Large / enterprise / multi-team app   | Modular + Standalone components |
+| Complex routing / SSR / SSG required  | Modular + Standalone mix |
+
+---
+
+## 📝 Summary of Commands
+
+| Command                                | Role                                   | When to Use |
+|----------------------------------------|----------------------------------------|-------------|
+| `node -v`                              | Check Node.js version                  | After installing Node |
+| `npm -v`                               | Check npm version                      | After installing Node |
+| `npm install -g @angular/cli@18`       | Install Angular CLI (v18) globally     | One-time setup |
+| `ng version`                           | Check Angular/CLI/Node versions        | After CLI install |
+| `ng new <projectName>`                 | Create new standalone Angular project  | Project start |
+| `ng new <projectName> --standalone=false` | Create new modular Angular project   | Project start |
+| `cd <projectName>`                     | Enter project folder                   | After project creation |
+| `ng serve`                             | Start dev server                       | Run locally |
+| `ng serve --open`                      | Start dev server and open browser      | Faster startup |
+
+---
+
+🏫 This workshop is part of the **Application côté client 1** module at Esprit School of Engineering
 

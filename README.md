@@ -1,4 +1,4 @@
-# FormationAngular
+#Angular Training
 This repository gathers pedagogical and practical resources related to the **Client-Side Application 1** module (Front-End Development – TWIN Option).  
 
 ### 🎯 Module Objectives  

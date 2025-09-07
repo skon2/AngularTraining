@@ -33,6 +33,7 @@ By the end of this training, students will be able to:
 
 🏫 This training is delivered as part of the **Client-Side Application 1** module at:  
 
-<p align="center">  
-  <img src="https://cdio.esprit.tn/images/cdio/esprit.png" alt="Esprit School of Engineering" width="250"/>  
-</p>  
+<p align="center">
+  <img src="https://cdio.esprit.tn/images/cdio/esprit.png" alt="Esprit School of Engineering" width="250"/>
+</p>
+

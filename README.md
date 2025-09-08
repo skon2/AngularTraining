@@ -1,4 +1,4 @@
-# 🛠️ Workshop 1 – Environment Setup (Angular 18)
+# 🛠️ Workshop 1 – Environment Setup (Angular LTS 18)
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Angular_Logo_SVG.svg/768px-Angular_Logo_SVG.svg.png?20231112001847" alt="Angular Logo" width="120"/>
 </p>

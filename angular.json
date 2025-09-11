@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "eventProject": {
+    "eventhub": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/event-project",
+            "outputPath": "dist/eventhub",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -37,6 +37,7 @@
               }
             ],
             "styles": [
+
               "src/styles.css"
             ],
             "scripts": []
@@ -69,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "eventProject:build:production"
+              "buildTarget": "eventhub:build:production"
             },
             "development": {
-              "buildTarget": "eventProject:build:development"
+              "buildTarget": "eventhub:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -95,6 +96,7 @@
               }
             ],
             "styles": [
+
               "src/styles.css"
             ],
             "scripts": []

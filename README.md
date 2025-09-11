@@ -1,40 +1,27 @@
-# 📚  Angular Training
-This repository gathers pedagogical and practical resources related to the **Client-Side Application 1** module (Front-End Development – TWIN Option).  
+# Eventhub
 
-### 🎯 Module Objectives  
-By the end of this training, students will be able to:  
-- Identify and manipulate the basics of a **Frontend application**  
-- Explain and implement **Angular architecture**  
-- Manage **navigation and routing**  
-- Build and validate **forms**  
-- Create **interactions between components**  
-- Develop and consume **services (HttpClient, observables, JWT, AuthGuard)**  
-- Organize and maintain a complete Angular application  
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
 
-### 📦 Repository content 
-- `/courses` → theoretical supports and presentations  
-- `/workshops` → workshop assignments (10 in total)  
-- `/solutions` → solutions and code examples  
-- `/resources` → complementary documentation, Git/Angular command summaries  
+## Development server
 
-### 🛠️ Prerequisites  
-- Algorithm 1  
-- Web Technology 1.0  
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-### 👨‍🏫 Instructor 
-- **[Badia Bouhdid](https://www.linkedin.com/in/badiabouhdid)**
+## Code scaffolding
 
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-### 📖 Useful References  
-- [Official Angular Documentation](https://angular.io/docs)  
-- [Angular Wishtack Guide](https://guide-angular.wishtack.io/)  
+## Build
 
----
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-🏫 This training is delivered as part of the **Client-Side Application 1** module at [Esprit School of Engineering](https://www.esprit.tn)
+## Running unit tests
 
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
+## Running end-to-end tests
 
-  
+Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Further help
 
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -71,24 +71,6 @@ This branch corresponds to **Workshop n°2: Getting Started with Angular** of th
 
 ---
 
-## 🚀 Implementation
-Once implemented, you will have:
-- A well-structured Angular modular project.
-- Bootstrap integrated for UI design.
-- A homepage with **Header and Footer**.
-- A **404 page** for invalid routes.
-
----
-
-## 📊 Key Concepts
-- Angular modular project setup (CSR).
-- Running Angular apps locally.
-- External CSS framework integration (Bootstrap).
-- Layout management with shared components.
-- Basic routing with Angular Router.
-
----
-
 ## 📝 Summary of Commands
 
 | Command                                                   | Purpose                              |

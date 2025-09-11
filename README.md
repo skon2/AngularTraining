@@ -102,14 +102,6 @@ Once implemented, you will have:
 | `ng g c features/home/pages/home --skip-tests`            | Generate the Home component          |
 
 ---
-
-🏫 This workshop is part of the **Application côté client 1** module at:
-
-<p align="center">  
-  <img src="https://cdio.esprit.tn/images/cdio/esprit.png" alt="Esprit School of Engineering" width="250"/>  
-</p>
-
----
 ### 👨‍🏫 Instructor
 - **[Badia Bouhdid](https://www.linkedin.com/in/badiabouhdid)**
 

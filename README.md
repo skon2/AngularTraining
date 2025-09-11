@@ -1,103 +1,113 @@
-# 🛠️ Workshop 1 – Environment Setup (Angular LTS 18)
+# 🛠️ Workshop 2 – Getting Started with Angular (Angular LTS 18)
 <p align="center">
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Angular_Logo_SVG.svg/768px-Angular_Logo_SVG.svg.png?20231112001847" alt="Angular Logo" width="120"/>
 </p>
 
-This branch corresponds to **Workshop n°1: Environment Setup **
+This branch corresponds to **Workshop n°2: Getting Started with Angular** of the module *Application côté client 1* at **ESPRIT School of Engineering**.
 
 ---
 
 ## 🎯 Objectives
-- Install the working environment required for **Angular 18**.  
-- Create a new Angular project (Standalone or Modular).  
-- Understand the possible configurations of an Angular project.  
+- Create a modular Angular SPA project (CSR).
+- Understand the project lifecycle and run the application.
+- Install and configure **Bootstrap** as an external dependency.
+- Create the first components (Header, Footer, Home, NotFound).
+- Set up a **404 page** for undefined routes.
 
 ---
 
-## 📦 Steps to Install the Environment
+## 📦 Steps / Instructions
 
-1. **Install Node.js**  
-   - Download from [https://nodejs.org/en/](https://nodejs.org/en/).  
-   - Minimum: `v18.13.0`  
-   - Recommended: `v20.x.x (LTS)`  
-   - Verify installation:  
-     ```bash
-     node -v
-     npm -v
-     ```
-
-2. **Install Angular CLI v18**  
+1. **Create a new Angular project**
    ```bash
-   npm install -g @angular/cli@18
-   ng version
+   ng new eventhub --routing --style=css --standalone=false
+   ```
+    - `--routing` → adds the routing module.
+    - `--style=css` → uses CSS for styles.
+    - `--standalone=false` → generates a modular project (NgModule structure).
+
+2. **Run the application**
+   ```bash
+   ng serve --open
+   ```
+   👉 `--open` (or `-o`) opens the browser at `http://localhost:4200`.
+
+3. **Install and configure Bootstrap**
+   ```bash
+   npm install bootstrap
+   ```
+   Then, in `angular.json` under `build → options`, add:
+   ```json
+   "styles": [
+     "node_modules/bootstrap/dist/css/bootstrap.min.css",
+     "src/styles.css"
+   ],
+   "scripts": [
+     "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+   ]
    ```
 
-3. **Install an IDE**  
-   - Recommended: *Visual Studio Code* or *WebStorm*.  
-
-4. **Create a workspace folder**  
-   Example:  
+4. **Generate components for the global layout**
    ```bash
-   mkdir Angular_Workspace
-   cd Angular_Workspace
+   ng g c layout/header --skip-tests
+   ng g c layout/footer --skip-tests
+   ng g c layout/not-found --skip-tests
+   ng g c features/home/pages/home --skip-tests
    ```
+   👉 You are free to design the CSS. You can take inspiration from:
+    - https://getbootstrap.com/docs/5.3/components/
+    - https://getbootstrap.com/docs/5.3/examples/
+
+5. **Configure the routing**  
+   In `app-routing.module.ts`:
+   ```ts
+   const routes: Routes = [
+     { path: '', component: HomeComponent },
+     { path: '**', component: NotFoundComponent }
+   ];
+   ```
+    - `/` → displays the Home page.
+    - Any other URL → displays the NotFound page.
 
 ---
 
-## 🚀 Create a New Angular Project
-
-### ▶️ 100% Standalone Project
-```bash
-ng new projectName
-cd projectName
-ng serve --open
-```
-
-- **Characteristics**:  
-  - No `AppModule`.  
-  - All components are standalone.  
-- **Best for**: small projects, prototypes, SPAs, experimentation.  
+## 🚀 Implementation
+Once implemented, you will have:
+- A well-structured Angular modular project.
+- Bootstrap integrated for UI design.
+- A homepage with **Header and Footer**.
+- A **404 page** for invalid routes.
 
 ---
 
-### ▶️ Modular Project (NgModule)
-```bash
-ng new projectName --standalone=false
-cd projectName
-ng serve --open
-```
-
-- **Characteristics**:  
-  - Uses `AppModule` and other modules.  
-  - Can include standalone components.  
-- **Best for**: large projects, enterprise apps, complex routing.  
-
----
-
-## 📊 Choosing Between Standalone vs Modular
-
-| Project Type                          | Recommended Approach |
-|---------------------------------------|-----------------------|
-| Small project / quick prototype       | 100% Standalone       |
-| Simple SPA                            | Standalone or light Modular |
-| Large / enterprise / multi-team app   | Modular + Standalone components |
-| Complex routing / SSR / SSG required  | Modular + Standalone mix |
+## 📊 Key Concepts
+- Angular modular project setup (CSR).
+- Running Angular apps locally.
+- External CSS framework integration (Bootstrap).
+- Layout management with shared components.
+- Basic routing with Angular Router.
 
 ---
 
 ## 📝 Summary of Commands
 
-| Command                                | Role                                   | When to Use |
-|----------------------------------------|----------------------------------------|-------------|
-| `node -v`                              | Check Node.js version                  | After installing Node |
-| `npm -v`                               | Check npm version                      | After installing Node |
-| `npm install -g @angular/cli@18`       | Install Angular CLI (v18) globally     | One-time setup |
-| `ng version`                           | Check Angular/CLI/Node versions        | After CLI install |
-| `ng new <projectName>`                 | Create new standalone Angular project  | Project start |
-| `ng new <projectName> --standalone=false` | Create new modular Angular project   | Project start |
-| `cd <projectName>`                     | Enter project folder                   | After project creation |
-| `ng serve`                             | Start dev server                       | Run locally |
-| `ng serve --open`                      | Start dev server and open browser      | Faster startup |
+| Command                                                   | Purpose                              |
+|-----------------------------------------------------------|--------------------------------------|
+| `ng new eventhub --routing --style=css --standalone=false` | Create a new modular Angular project |
+| `ng serve --open`                                         | Run the project locally              |
+| `npm install bootstrap`                                   | Install Bootstrap                    |
+| `ng g c layout/header --skip-tests`                       | Generate the Header component        |
+| `ng g c layout/footer --skip-tests`                       | Generate the Footer component        |
+| `ng g c layout/not-found --skip-tests`                    | Generate the NotFound component      |
+| `ng g c features/home/pages/home --skip-tests`            | Generate the Home component          |
+
+---
+
+🏫 This workshop is part of the **Application côté client 1** module at:
+
+<p align="center">  
+  <img src="https://cdio.esprit.tn/images/cdio/esprit.png" alt="Esprit School of Engineering" width="250"/>  
+</p>
 
 ---
 ### 👨‍🏫 Instructor

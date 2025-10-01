@@ -9,6 +9,7 @@ import {Ticket} from '../../models/ticket';
 export class ListTicketComponent implements OnInit {
   title:string;
   tickets: Array<Ticket> ;
+  search:number;
   constructor() {
     //this.title = 'Hello World';
   }
@@ -33,13 +34,14 @@ export class ListTicketComponent implements OnInit {
         eventId : 6,
         userId : 9,
         date : new Date(),
-        valid : true,
-
-
+        valid : false,
       }
 
     ]
 
 
+  }
+  validateTicket(ticket: Ticket) {
+    ticket.valid =false;
   }
 }

@@ -25,6 +25,7 @@
         </div>
         <div class="card-title-section">
           <h3 class="event-name">{{ event.title }}</h3>
+          
           <div class="event-meta">
             <span class="date"><i class="far fa-calendar"></i> {{ event.date | date:'dd MMM yyyy' }}</span>
             <span class="location"><i class="fas fa-map-marker-alt"></i> {{ event.location }}</span>
@@ -35,11 +36,17 @@
       
       <div class="card-body">
         <p class="event-description">{{ event.description }}</p>
+        <a [routerLink]="['./detail',event.id]">  
+          Voir les détails
+          <i class="fas fa-info-circle"></i>
+        </a>
         <div class="event-stats">
           <div class="places-info">
             <i class="fas fa-users"></i>
+            
             <span>{{ event.nbplaces }} places disponibles</span>
           </div>
+          
           <div class="likes-count">
             <i class="far fa-heart"></i>
             <span>{{ event.nblikes }} likes</span>
@@ -55,6 +62,7 @@
           Réserver maintenant
           <i class="fas fa-arrow-right"></i>
         </button>
+       
       </div>
     </div>
   </div>

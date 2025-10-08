@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DatePersPipe } from './pipes/date-pers.pipe';
+import {DateTransferPipe} from './date-transfer.pipe';
 
 
 
 @NgModule({
-  declarations: [
-    DatePersPipe
+  declarations: [DateTransferPipe],
+  exports: [
+    DateTransferPipe
   ],
   imports: [
     CommonModule

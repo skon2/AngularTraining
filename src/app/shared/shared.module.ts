@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {DateTransferPipe} from './date-transfer.pipe';
+import {DateTransferPipe} from './pipes/date-transfer.pipe';
 
 
 

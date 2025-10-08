@@ -7,10 +7,10 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './layout/home/home.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
-import { ListTicketComponent } from './layout/list-ticket/list-ticket.component';
+import { ListTicketComponent } from './features/tickets/list-ticket/list-ticket.component';
 import {FormsModule} from '@angular/forms';
 import { ListEventComponent } from './features/events/list-event/list-event.component';
-import { DateTransferPipe } from './shared/date-transfer.pipe';
+import { DateTransferPipe } from './shared/pipes/date-transfer.pipe';
 import {SharedModule} from './shared/shared.module';
 
 @NgModule({

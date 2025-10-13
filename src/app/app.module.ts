@@ -7,6 +7,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './layout/home/home.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
+import {ListEventComponent} from './features/events/list-event/list-event.component';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -22,7 +23,6 @@ import {FormsModule} from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-
   providers: [],
   bootstrap: [AppComponent]
 })

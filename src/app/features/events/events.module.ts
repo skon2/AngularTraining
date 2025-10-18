@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { EventsRoutingModule } from './events-routing.module';
 import { EventsComponent } from './events.component';
 import {ListEventComponent} from './list-event/list-event.component';
+import {SharedModule} from '../../shared/shared.module';
+import {FormsModule} from '@angular/forms';
 import { DetailEventComponent } from './detail-event/detail-event.component';
-import {FormsModule} from "@angular/forms";
 import { SideBarComponent } from './side-bar/side-bar.component';
 
 
@@ -19,7 +20,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
   imports: [
     CommonModule,
     EventsRoutingModule,
-      FormsModule
+    SharedModule,
+    FormsModule,
   ]
 })
 export class EventsModule { }

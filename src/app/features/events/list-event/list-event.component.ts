@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Eventy} from '../../../models/eventy';
-import {EventsService} from '../../../shared/data/events.service';
-
 
 @Component({
   selector: 'app-list-event',
@@ -9,26 +7,35 @@ import {EventsService} from '../../../shared/data/events.service';
   styleUrl: './list-event.component.css'
 })
 export class ListEventComponent implements OnInit {
-    //attributes =>  var , values
-  title:string;
-  //title="hello" => we can do this :/ but its not a best practice
-  listEvents:Eventy[];
-  searchValue:string;
-  constructor(private data: EventsService) {
+  list: Eventy[];
+  constructor() {
   }
-  //methods => action
   ngOnInit() {
-    this.listEvents= this.data.getAllEvents();
+    this.list=[
+      { id:1,
+        title: 'Angular Summit',
+        description: 'welocme to our Angular Event',
+        price: 50,
+        organizerId: 101,
+        imageUrl: 'https://m.media-amazon.com/images/I/71vC4ryHjOL._UF1000,1000_QL80_.jpg',
+        nbrPlaces: 25,
+        nbrLikes: 0,
+        date: new Date('2025-11-10'),
+        location: 'Tunis',},
+      { id:2,
+        title: 'Symfony Summit',
+        description: 'welocme to our Symfony Event',
+        price: 50,
+        organizerId: 101,
+        imageUrl: 'https://cdn.dribbble.com/userupload/37287941/file/original-a59d13499667b765fb5aceb8b5d5bf0d.jpg',
+        nbrPlaces: 0,
+        nbrLikes: 0,
+        date: new Date('2025-11-10'),
+        location: 'Tunis',}
+    ]
   }
-  //method to buy ticket => click on the button buy ticket
-  //Haider
-  nbrPlaceDecr(e:Eventy){
-    e.nbPlaces --
-  }
-  //Marwa
-  nbrLike(e:Eventy){
-    e.nbrLike ++
-  }
-  search(){}
 
+  likeEvent(event: Eventy){
+    event.nbrLikes ++;
+  }
 }

@@ -6,10 +6,6 @@ import { Component } from '@angular/core';
   styleUrl: './detail-event.component.css'
 })
 export class DetailEventComponent {
- //read URL
-  //get DATA from URL=> id
-  //inject service
-  //fetch ListEvent by ID
-
-
+  //fetch id from url
+  //fetch listEvent
 }

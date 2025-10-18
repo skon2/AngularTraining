@@ -53,4 +53,9 @@ export class EventsService {
   getallEvents(): Eventy[] {
     return this.list;
   }
+
+
+  public getEventById(id: number): Eventy  {
+    return this.list[id - 1];
+  }
 }

@@ -1,21 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { EventsService } from '../../../shared/data/events.service'; // ✅ Correct path
-import { Eventy } from '../../../../models/eventy';
+import {Component, OnInit} from '@angular/core';
+import {DataEventsService} from '../../../shared/services/data-events.service';
+import {ActivatedRoute} from '@angular/router';
+import {Eventy} from '../../../models/eventy';
 
 @Component({
   selector: 'app-detail-event',
   templateUrl: './detail-event.component.html',
-  styleUrls: ['./detail-event.component.css'] //
+  styleUrl: './detail-event.component.css'
 })
-export class DetailEventComponent implements OnInit {
-
-  currentEvent:Eventy;
-  constructor(private route: ActivatedRoute, private eventService: EventsService) {}
-
-  ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
-    this.currentEvent=this.eventService.getEventById(id);
-
+export class DetailEventComponent implements OnInit{
+  event?:Eventy;
+  constructor(private currentRoute:ActivatedRoute,
+                private dataService: DataEventsService) {
   }
+  ngOnInit() {
+    this.event= this.dataService.getEventById(+this.currentRoute.snapshot.params['id']);
+    console.log(this.event)
+  }
+
 }

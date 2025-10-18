@@ -1,38 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Eventy } from '../../../../models/eventy'; // ← make sure this path is correct
-import { EventsService } from '../../../shared/data/events.service';
+import { Eventy } from '../../../models/eventy';
+import { DataEventsService } from '../../../shared/services/data-events.service';
 
 @Component({
   selector: 'app-list-event',
   templateUrl: './list-event.component.html',
-  styleUrls: ['./list-event.component.css']
+  styleUrls: ['./list-event.component.css'], // fixed typo: styleUrl → styleUrls
 })
 export class ListEventComponent implements OnInit {
-  title!: string;
-  listEvents: Eventy[] = [];
-  filteredEvents: Eventy[] = [];
-  searchText: string = '';
+  list: Eventy[] = [];
+  searchTerm: string = ''; // <-- new property
 
-  constructor(private data: EventsService) {}
+  constructor(private dataService: DataEventsService) {}
 
-  ngOnInit(): void {
-    this.listEvents = this.data.getallEvents();
-    this.filteredEvents = [...this.listEvents];
+  ngOnInit() {
+    this.list = this.dataService.getAllEvents();
   }
 
-  addLike(event: Eventy) { event.nblikes++; }
-  buyPlace(event: Eventy) { event.nbplaces--; }
+  likeEvent(event: Eventy) {
+    event.nbrLikes++;
+  }
 
-  searchEvents() {
-    const text = this.searchText.toLowerCase();
-    if (!text) {
-      this.filteredEvents = [...this.listEvents];
-    } else {
-      this.filteredEvents = this.listEvents.filter(event =>
-        event.title.toLowerCase().includes(text) ||
-        event.description.toLowerCase().includes(text) ||
-        event.location.toLowerCase().includes(text)
-      );
-    }
+  // Getter to return filtered events
+  get filteredList(): Eventy[] {
+    if (!this.searchTerm) return this.list;
+    return this.list.filter(event =>
+      event.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 }

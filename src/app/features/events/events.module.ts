@@ -9,6 +9,8 @@ import {FormsModule} from "@angular/forms";
 import { SideBarComponent } from './side-bar/side-bar.component';
 import {EventsService} from '../../shared/data/events.service';
 import { CardEventComponent } from './card-event/card-event.component';
+import { share } from 'rxjs';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { CardEventComponent } from './card-event/card-event.component';
   imports: [
     CommonModule,
     EventsRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ]
 
 })

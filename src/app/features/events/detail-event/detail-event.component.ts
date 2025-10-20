@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DataEventsService} from '../../../shared/services/data-events.service';
 import {ActivatedRoute} from '@angular/router';
+import {EventsService} from '../../../shared/data/events.service';
 import {Eventy} from '../../../models/eventy';
 
 @Component({
@@ -8,14 +8,14 @@ import {Eventy} from '../../../models/eventy';
   templateUrl: './detail-event.component.html',
   styleUrl: './detail-event.component.css'
 })
-export class DetailEventComponent implements OnInit{
-  event?:Eventy;
-  constructor(private currentRoute:ActivatedRoute,
-                private dataService: DataEventsService) {
+export class DetailEventComponent implements OnInit {
+   currentEvent:Eventy;
+  constructor(private route: ActivatedRoute,
+              private eventService:EventsService) {
   }
   ngOnInit() {
-    this.event= this.dataService.getEventById(+this.currentRoute.snapshot.params['id']);
-    console.log(this.event)
+   let id= this.route.snapshot.params['id'];
+   this.currentEvent=this.eventService.getEventById(id);
   }
 
 }

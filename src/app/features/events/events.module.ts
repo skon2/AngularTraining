@@ -8,6 +8,8 @@ import {SharedModule} from '../../shared/shared.module';
 import {FormsModule} from '@angular/forms';
 import { DetailEventComponent } from './detail-event/detail-event.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import {DataEventsService} from '../../shared/services/data-events.service';
+import { CardEventComponent } from './card-event/card-event.component';
 
 
 @NgModule({
@@ -15,13 +17,15 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     EventsComponent,
     ListEventComponent,
     DetailEventComponent,
-    SideBarComponent
+    SideBarComponent,
+    CardEventComponent
   ],
   imports: [
     CommonModule,
     EventsRoutingModule,
     SharedModule,
     FormsModule,
-  ]
+  ],
+ // providers:[DataEventsService]
 })
 export class EventsModule { }

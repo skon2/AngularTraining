@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {DateTransferPipe} from './pipes/date-transfer.pipe';
+import { HighlightDirective } from './directives/highlight.directive';
+import { EuroPipe } from './pipes/euro.pipe';
 
 
 
 @NgModule({
-  declarations: [DateTransferPipe],
+    declarations: [
+        HighlightDirective,
+        EuroPipe
+    ],
   exports: [
-    DateTransferPipe
+    HighlightDirective,
+    EuroPipe
   ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule
+    ]
 })
 export class SharedModule { }

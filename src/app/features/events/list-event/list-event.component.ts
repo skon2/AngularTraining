@@ -1,22 +1,35 @@
 import {Component, OnInit} from '@angular/core';
 import {Eventy} from '../../../models/eventy';
-import {DataEventsService} from '../../../shared/services/data-events.service';
+import {EventsService} from '../../../shared/data/events.service';
+
 
 @Component({
   selector: 'app-list-event',
   templateUrl: './list-event.component.html',
   styleUrl: './list-event.component.css',
- // providers:[DataEventsService]
+
 })
 export class ListEventComponent implements OnInit {
-  list: Eventy[];
-  constructor(private dataService:DataEventsService) {
+    //attributes =>  var , values
+  title:string;
+  //title="hello" => we can do this :/ but its not a best practice
+  listEvents:Eventy[];
+  searchValue:string;
+  constructor(private eventService:EventsService) {
   }
+  //methods => action
   ngOnInit() {
-    this.list=this.dataService.getAllEvents();
+    this.listEvents=this.eventService.getAllEvents();
   }
+  //method to buy ticket => click on the button buy ticket
+  //Haider
+  nbrPlaceDecr(e:Eventy){
+    e.nbPlaces --
+  }
+  //Marwa
+  nbrLike(e:Eventy){
+    e.nbrLike ++
+  }
+  search(){}
 
-  likeEvent(event: Eventy){
-    event.nbrLikes ++;
-  }
 }

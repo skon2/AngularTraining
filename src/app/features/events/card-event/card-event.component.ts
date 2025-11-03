@@ -7,11 +7,12 @@ import {Eventy} from '../../../models/eventy';
   styleUrl: './card-event.component.css'
 })
 export class CardEventComponent {
-  //data ???
-  @Input() event: Eventy;
-  @Output() eventNotifParent:EventEmitter<Eventy>  =
-    new EventEmitter();
-  notifParent(e: Eventy) {
-    this.eventNotifParent.emit(e);
+  searchValue: string;
+  @Input() e:Eventy;
+  @Output() notificationLike:EventEmitter<[Eventy, string]>
+    = new EventEmitter();
+  likeEvent(e:Eventy) {
+    this.notificationLike.emit([e,"like"]);
   }
+  nbrPlaceDecr(e:Eventy) {}
 }

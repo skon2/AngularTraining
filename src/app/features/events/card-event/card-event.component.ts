@@ -9,10 +9,10 @@ import {Eventy} from '../../../models/eventy';
 export class CardEventComponent {
   searchValue: string;
   @Input() e:Eventy;
-  @Output() notificationLike:EventEmitter<[Eventy, string]>
+  @Output() notificationLike:EventEmitter<Eventy>
     = new EventEmitter();
   likeEvent(e:Eventy) {
-    this.notificationLike.emit([e,"like"]);
+    this.notificationLike.emit(e);
   }
   nbrPlaceDecr(e:Eventy) {}
 }

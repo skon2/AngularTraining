@@ -25,7 +25,7 @@ export class ListEventComponent implements OnInit {
     organizerId: 0,
     imageUrl: '',
     nbPlaces: 0,
-    nbrLike: 0
+    nblikes: 0
   };
 
   constructor(private eventService: EventsService) { }
@@ -70,7 +70,7 @@ export class ListEventComponent implements OnInit {
       organizerId: 0,
       imageUrl: '',
       nbPlaces: 0,
-      nbrLike: 0
+      nblikes: 0
     };
   }
 
@@ -83,7 +83,7 @@ export class ListEventComponent implements OnInit {
 
   // Increase likes
   nbrLike(e: Eventy) {
-    e.nbrLike++;
+    e.nblikes++;
   }
 
   // Search events by title

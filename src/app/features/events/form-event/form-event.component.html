@@ -1,67 +1,55 @@
 <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)">
-    <!-- Title -->
-    <div class="form-group mb-3">
-      <label for="title">Title</label>
-      <input id="title" name="title" type="text" [(ngModel)]="event.title" required #title="ngModel" class="form-control">
-      <div class="text-danger" *ngIf="title.invalid && title.touched">Title is required.</div>
+  <!-- Title -->
+  <div class="form-group mb-3">
+    <label for="title">Title</label>
+    <input id="title" name="title" type="text" [(ngModel)]="event.title" required class="form-control">
+  </div>
+
+  <!-- Description -->
+  <div class="form-group mb-3">
+    <label for="description">Description</label>
+    <textarea id="description" name="description" [(ngModel)]="event.description" required class="form-control"></textarea>
+  </div>
+
+  <!-- Date -->
+  <div class="form-group mb-3">
+    <label for="date">Date</label>
+    <input id="date" name="date" type="date" [(ngModel)]="event.date" required class="form-control">
+  </div>
+
+  <!-- Location -->
+  <div class="form-group mb-3">
+    <label for="location">Location</label>
+    <input id="location" name="location" type="text" [(ngModel)]="event.location" required class="form-control">
+  </div>
+
+  <!-- Price -->
+  <div class="form-group mb-3">
+    <label for="price">Price</label>
+    <input id="price" name="price" type="number" [(ngModel)]="event.price" required min="0" class="form-control">
+  </div>
+
+  <!-- Organizer ID -->
+  <div class="form-group mb-3">
+    <label for="organizerId">Organizer ID</label>
+    <input id="organizerId" name="organizerId" type="number" [(ngModel)]="event.organizerId" required min="1" class="form-control">
+  </div>
+
+  <!-- Image -->
+  <div class="form-group mb-3">
+    <label for="image">Event Image</label>
+    <input
+      id="image"
+      name="image"
+      type="file"
+      accept="image/*"
+      (change)="onFileSelected($event)"
+      class="form-control">
+    <div class="mt-2" *ngIf="event.imageUrl">
+      <strong>Preview:</strong><br>
+      <img [src]="event.imageUrl" alt="Preview" width="150" class="mt-2 rounded shadow">
     </div>
-  
-    <!-- Description -->
-    <div class="form-group mb-3">
-      <label for="description">Description</label>
-      <textarea id="description" name="description" [(ngModel)]="event.description" required #description="ngModel" class="form-control"></textarea>
-      <div class="text-danger" *ngIf="description.invalid && description.touched">Description is required.</div>
-    </div>
-  
-    <!-- Date -->
-    <div class="form-group mb-3">
-      <label for="date">Date</label>
-      <input id="date" name="date" type="date" [(ngModel)]="event.date" required #date="ngModel" class="form-control">
-      <div class="text-danger" *ngIf="date.invalid && date.touched">Date is required.</div>
-    </div>
-  
-    <!-- Location -->
-    <div class="form-group mb-3">
-      <label for="location">Location</label>
-      <input id="location" name="location" type="text" [(ngModel)]="event.location" required #location="ngModel" class="form-control">
-      <div class="text-danger" *ngIf="location.invalid && location.touched">Location is required.</div>
-    </div>
-  
-    <!-- Price -->
-    <div class="form-group mb-3">
-      <label for="price">Price</label>
-      <input id="price" name="price" type="number" [(ngModel)]="event.price" required min="0" #price="ngModel" class="form-control">
-      <div class="text-danger" *ngIf="price.invalid && price.touched">Price is required and cannot be negative.</div>
-    </div>
-  
-    <!-- Organizer ID -->
-    <div class="form-group mb-3">
-      <label for="organizerId">Organizer ID</label>
-      <input id="organizerId" name="organizerId" type="number" [(ngModel)]="event.organizerId" required min="1" #organizerId="ngModel" class="form-control">
-      <div class="text-danger" *ngIf="organizerId.invalid && organizerId.touched">Organizer ID is required and must be at least 1.</div>
-    </div>
-  
-    <!-- Image URL -->
-    <div class="form-group mb-3">
-      <label for="imageUrl">Image URL</label>
-      <input id="imageUrl" name="imageUrl" type="text" [(ngModel)]="event.imageUrl" required #imageUrl="ngModel" class="form-control">
-      <div class="text-danger" *ngIf="imageUrl.invalid && imageUrl.touched">Image URL is required.</div>
-    </div>
-  
-    <!-- Number of Places -->
-    <div class="form-group mb-3">
-      <label for="nbPlaces">Number of Places</label>
-      <input id="nbPlaces" name="nbPlaces" type="number" [(ngModel)]="event.nbPlaces" required min="1" #nbPlaces="ngModel" class="form-control">
-      <div class="text-danger" *ngIf="nbPlaces.invalid && nbPlaces.touched">Number of places is required and must be at least 1.</div>
-    </div>
-  
-    <!-- Number of Likes -->
-    <div class="form-group mb-3">
-      <label for="nbrLike">Number of Likes</label>
-      <input id="nbrLike" name="nbrLike" type="number" [(ngModel)]="event.nbrLike" min="0" #nbrLike="ngModel" class="form-control">
-      <div class="text-danger" *ngIf="nbrLike.invalid && nbrLike.touched">Likes cannot be negative.</div>
-    </div>
-  
-    <button type="submit" class="btn btn-primary">Save Event</button>
-  </form>
-  
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save Event</button>
+</form>

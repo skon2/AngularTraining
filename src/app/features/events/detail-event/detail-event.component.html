@@ -1,60 +1,38 @@
-<div class="event-detail-container" *ngIf="currentEvent; else notFound">
-  <div class="event-card shadow-sm p-3 rounded">
-
-    <div class="event-image mb-3 text-center">
-      <img
-        [src]="currentEvent.imageUrl || 'assets/default-event.jpg'"
-        [alt]="currentEvent.title"
-        class="img-fluid rounded"
-        style="max-height: 400px; object-fit: cover;"
-      />
+<div class="event-detail-container" *ngIf="event">
+  <div class="event-card">
+    <div class="event-image">
+      <img [src]="event.imageUrl" [alt]="event.title" />
     </div>
 
     <div class="event-info">
-      <h2 class="event-title mb-2">{{ currentEvent.title }}</h2>
-      <p class="event-description mb-3">{{ currentEvent.description }}</p>
+      <h1 class="event-title">{{ event.title }}</h1>
+      <p class="event-description">{{ event.description }}</p>
 
-      <div class="event-meta d-flex flex-column gap-2">
-        <p><i class="bi bi-calendar-event me-2"></i> {{ currentEvent.date | date:'fullDate' }}</p>
-        <p><i class="bi bi-geo-alt me-2"></i> {{ currentEvent.location }}</p>
-        <p><i class="bi bi-cash-coin me-2"></i> {{ currentEvent.price }} DT</p>
-        <p>
-          <i class="bi bi-people me-2"></i>
-          <strong>Places :</strong>
-          <span
-            class="badge"
-            [ngClass]="{
-              'bg-success': currentEvent.nbPlaces > 0,
-              'bg-danger': currentEvent.nbPlaces === 0
-            }"
-          >
-            {{ currentEvent.nbPlaces > 0 ? currentEvent.nbPlaces + ' disponibles' : 'Complet' }}
-          </span>
-        </p>
-        <p>
-          <i class="bi bi-heart-fill text-danger me-2"></i>
-          {{ currentEvent.nbrLike }} J’aime
-        </p>
+      <div class="event-meta">
+        <p><strong>Date :</strong> {{ event.date | date: 'fullDate' }}</p>
+        <p><strong>Lieu :</strong> {{ event.location }}</p>
+        <p><strong>Prix :</strong> {{ event.price }} DT</p>
+        <p><strong>Places disponibles :</strong> {{ event.nbPlaces }}</p>
       </div>
-    </div>
 
-    <!-- 🔹 Boutons d’action -->
-    <div class="event-actions mt-3 d-flex gap-2">
-      <button class="btn btn-primary" [disabled]="currentEvent.nbPlaces === 0">
-        Réserver
-      </button>
-      <button class="btn btn-outline-secondary">
-        Partager
-      </button>
-    </div>
+      <div class="event-actions">
+            <button
+              class="buy-btn"
+              [disabled]="event.nbPlaces === 0"
+              (click)="nbPlace(event)"
+            >
+              🎟️ Buy Ticket
+            </button>        <button class="like-btn" [class.liked]="event.nbrLike">
+          ❤️ {{ event.nbrLike }}
+        </button>
+      </div>
 
+      <a routerLink="/events" class="back-link">⬅ Retour à la liste</a>
+    </div>
   </div>
 </div>
 
-<!-- 🔹 Message si aucun événement trouvé -->
-<ng-template #notFound>
-  <div class="not-found text-center p-5">
-    <h3>🚫 Événement introuvable</h3>
-    <p>Vérifie l’identifiant ou retourne à la liste des événements.</p>
-  </div>
-</ng-template>
+<div *ngIf="!event" class="not-found">
+  <h2>⚠️ Événement introuvable</h2>
+  <a routerLink="/" class="back-link">Retour</a>
+</div>

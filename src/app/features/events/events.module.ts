@@ -9,6 +9,9 @@ import {FormsModule} from "@angular/forms";
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { CardEventComponent } from './card-event/card-event.component';
 import {SharedModule} from '../../shared/shared.module';
+import { FormEventComponent } from './form-event/form-event.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -17,12 +20,14 @@ import {SharedModule} from '../../shared/shared.module';
     ListEventComponent,
     DetailEventComponent,
     SideBarComponent,
-    CardEventComponent
+    CardEventComponent,
+    FormEventComponent
   ],
   imports: [
     CommonModule,
     EventsRoutingModule,
     FormsModule,
+    HttpClientModule,
     SharedModule
   ]
 

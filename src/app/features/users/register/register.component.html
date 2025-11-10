@@ -1,0 +1,80 @@
+<h2>User Registration</h2>
+
+<form *ngIf="formRegister" [formGroup]="formRegister" (ngSubmit)="onSubmit()">
+
+  <!-- First Name -->
+  <div>
+    <label>First Name</label>
+    <input type="text" formControlName="firstName" />
+    <div *ngIf="formRegister.get('firstName')?.invalid && (formRegister.get('firstName')?.touched || formRegister.get('firstName')?.dirty)">
+      <small *ngIf="formRegister.get('firstName')?.errors?.['required']" style="color:red">First Name is required</small>
+    </div>
+  </div>
+
+  <!-- Last Name -->
+  <div>
+    <label>Last Name</label>
+    <input type="text" formControlName="lastName" />
+    <div *ngIf="formRegister.get('lastName')?.invalid && (formRegister.get('lastName')?.touched || formRegister.get('lastName')?.dirty)">
+      <small *ngIf="formRegister.get('lastName')?.errors?.['required']" style="color:red">Last Name is required</small>
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label>Email</label>
+    <input type="email" formControlName="email" />
+    <div *ngIf="formRegister.get('email')?.invalid && (formRegister.get('email')?.touched || formRegister.get('email')?.dirty)">
+      <small *ngIf="formRegister.get('email')?.errors?.['required']" style="color:red">Email is required</small>
+      <small *ngIf="formRegister.get('email')?.errors?.['email']" style="color:red">Invalid email format</small>
+      <small *ngIf="formRegister.get('email')?.errors?.['pattern']" style="color:red">Email pattern invalid</small>
+    </div>
+  </div>
+
+  <!-- Password -->
+  <div>
+    <label>Password</label>
+    <input type="password" formControlName="password" />
+    <div *ngIf="formRegister.get('password')?.invalid && (formRegister.get('password')?.touched || formRegister.get('password')?.dirty)">
+      <small *ngIf="formRegister.get('password')?.errors?.['required']" style="color:red">Password is required</small>
+      <small *ngIf="formRegister.get('password')?.errors?.['minlength']" style="color:red">Password must be at least 8 characters</small>
+      <small *ngIf="formRegister.get('password')?.errors?.['pattern']" style="color:red">
+        Password must contain uppercase, lowercase, number & special char
+      </small>
+    </div>
+  </div>
+
+  <!-- Address -->
+  <div formGroupName="adressee">
+    <h3>Address</h3>
+    <div>
+      <label>Street</label>
+      <input type="text" formControlName="street" />
+    </div>
+    <div>
+      <label>City</label>
+      <input type="text" formControlName="city" />
+    </div>
+    <div>
+      <label>State</label>
+      <input type="text" formControlName="state" />
+    </div>
+    <div>
+      <label>ZIP</label>
+      <input type="text" formControlName="zip" />
+    </div>
+  </div>
+
+  <!-- Phones -->
+  <div formArrayName="phones">
+    <h3>Phone Numbers</h3>
+    <div *ngFor="let phone of phones.controls; let i = index">
+      <input type="text" [formControlName]="i" placeholder="Enter phone number" />
+      <button type="button" (click)="removePhone(i)" *ngIf="phones.length > 1">Remove</button>
+    </div>
+    <button type="button" (click)="addPhone()">+ Add Phone</button>
+  </div>
+
+  <br />
+  <button type="submit" [disabled]="formRegister.invalid">Register</button>
+</form>

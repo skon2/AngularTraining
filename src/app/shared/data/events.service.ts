@@ -35,4 +35,6 @@ export class EventsService {
   public deleteEvent(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  
 }

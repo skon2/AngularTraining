@@ -9,4 +9,5 @@ export interface Eventy {
   imageUrl: string;
   nbPlaces: number;
   nblikes: number;  // doit correspondre exactement au backend
+  
 }

@@ -8,7 +8,7 @@ import { EventsService } from '../../../shared/data/events.service';
   styleUrls: ['./list-event.component.css']
 })
 export class ListEventComponent implements OnInit {
-
+  
   // List of events
   listEvents: Eventy[] = [];
 
@@ -96,4 +96,25 @@ export class ListEventComponent implements OnInit {
       );
     }
   }
+
+
+  deleteEvent(id?: number) {
+    if (!id) {
+      alert('Impossible de supprimer cet événement : id manquant.');
+      return;
+    }
+  
+    if (!confirm('Voulez-vous vraiment supprimer cet événement ?')) return;
+  
+    this.eventService.deleteEvent(id).subscribe({
+      next: () => {
+        // Supprime localement de la liste
+        this.listEvents = this.listEvents.filter(e => e.id !== id);
+        console.log('Événement supprimé avec succès.');
+      },
+      error: (err) => console.error('Erreur lors de la suppression :', err)
+    });
+  }
+  
+  
 }

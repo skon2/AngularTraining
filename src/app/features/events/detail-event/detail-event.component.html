@@ -1,37 +1,63 @@
 <div class="event-detail-container" *ngIf="event">
   <div class="event-card">
+    <!-- Event Image -->
     <div class="event-image">
       <img [src]="event.imageUrl" [alt]="event.title" />
     </div>
 
+    <!-- Event Info -->
     <div class="event-info">
       <h1 class="event-title">{{ event.title }}</h1>
       <p class="event-description">{{ event.description }}</p>
 
       <div class="event-meta">
-        <p><strong>Date :</strong> {{ event.date | date: 'fullDate' }}</p>
-        <p><strong>Lieu :</strong> {{ event.location }}</p>
-        <p><strong>Prix :</strong> {{ event.price }} DT</p>
-        <p><strong>Places disponibles :</strong> {{ event.nbPlaces }}</p>
+        <p><i class="bi bi-calendar-event"></i><strong>Date :</strong> {{ event.date | date: 'fullDate' }}</p>
+        <p><i class="bi bi-geo-alt"></i><strong>Lieu :</strong> {{ event.location }}</p>
+        <p><i class="bi bi-cash-coin"></i><strong>Prix :</strong> {{ event.price }} DT</p>
+        <p><i class="bi bi-people"></i><strong>Places disponibles :</strong> {{ event.nbPlaces }}</p>
       </div>
 
+      <!-- Event Actions -->
       <div class="event-actions">
-            <button
-              class="buy-btn"
-              [disabled]="event.nbPlaces === 0"
-              (click)="nbPlace(event)"
-            >
-              🎟️ Buy Ticket
-            </button>        <button class="like-btn" [class.liked]="event.nblikes">
+        <button
+          class="btn-primary"
+          [disabled]="event.nbPlaces === 0"
+          (click)="nbPlace(event)">
+          🎟️ Buy Ticket
+        </button>
+        <button class="btn-outline-secondary like-btn" [class.liked]="event.nblikes">
           ❤️ {{ event.nblikes }}
         </button>
       </div>
 
       <a routerLink="/events" class="back-link">⬅ Retour à la liste</a>
     </div>
+
+    <!-- Feedback Section -->
+    <div class="feedbacks-section" *ngIf="feedbacks.length > 0">
+      <h3>💬 Feedbacks</h3>
+      <div *ngFor="let fb of feedbacks" class="feedback-card">
+        <p><strong>Utilisateur :</strong> {{ fb.idUser }}</p>
+        <p><strong>Note :</strong> 
+          <span *ngFor="let star of [1,2,3,4,5]" 
+                [ngClass]="star <= fb.rate ? 'text-danger' : 'text-muted'">
+            ★
+          </span>
+        </p>
+        
+        <p><strong>Commentaire :</strong> {{ fb.content || 'Aucun commentaire' }}</p>
+        <p><em>{{ fb.date | date:'mediumDate' }}</em></p>
+        <hr>
+      </div>
+    </div>
+
+    <div *ngIf="feedbacks.length === 0" class="no-feedback">
+      <p>Aucun feedback pour cet événement.</p>
+    </div>
   </div>
 </div>
 
+<!-- Not Found Section -->
 <div *ngIf="!event" class="not-found">
   <h2>⚠️ Événement introuvable</h2>
   <a routerLink="/" class="back-link">Retour</a>

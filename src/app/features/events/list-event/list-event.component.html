@@ -22,11 +22,12 @@
   <!-- Events List -->
   <div class="row g-3">
     <app-card-event
-      class="col-md-4"
-      *ngFor="let event of listEvents"
-      [e]="event"
-      (notificationLike)="nbrLike(event)"
-    >
-    </app-card-event>
+    class="col-md-4"
+    *ngFor="let event of listEvents"
+    [e]="event"
+    (notificationLike)="nbrLike(event)"
+    (notificationDelete)="deleteEvent($event)">
+  </app-card-event>
+  
   </div>
 </div>

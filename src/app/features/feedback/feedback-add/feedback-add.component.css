@@ -1,0 +1,26 @@
+.feedback-add-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    background: white;
+  }
+  
+  .stars {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .text-danger { color: #f5576c; }
+  .text-muted { color: #ccc; }
+  
+  button.btn-primary {
+    margin-top: 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.8rem 2rem;
+  }
+  

@@ -24,5 +24,9 @@ import { Observable } from 'rxjs';
         return this.http.get<Feedback[]>(`http://localhost:8088/api/feedback/event/${idEvent}`);
       }
       
+  getAllFeedbacks(): Observable<Feedback[]> {
+    return this.http.get<Feedback[]>(`${this.apiUrl}`);
+  }
+      
   }
   

@@ -1,0 +1,27 @@
+.feedback-list-container {
+    max-width: 700px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 16px;
+    background: white;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+  
+  .feedback-card {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 12px;
+    background: #f8f9fa;
+  }
+  
+  .feedback-card p {
+    margin: 0.3rem 0;
+  }
+  
+  .stars {
+    font-size: 1.2rem;
+  }
+  
+  .text-danger { color: #f5576c; }
+  .text-muted { color: #ccc; }
+  

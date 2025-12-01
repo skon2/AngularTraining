@@ -1,4 +1,4 @@
-export interface Eventy {
+export class Eventy {
   id?: number;
   title: string;
   description: string;

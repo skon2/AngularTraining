@@ -50,3 +50,19 @@
     </div>
   </div>
 </section>
+
+
+<section class="container py-5">
+  <div class="row g-4">
+    <ng-container *ngIf="list.length > 0; else noEventsTemplate">
+      <div class="col-md-4" *ngFor="let object of list">
+        <app-card [e]="object"></app-card>
+      </div>
+    </ng-container>
+
+    <!-- Template for no events -->
+    <ng-template #noEventsTemplate>
+      <p class="text-center">Aucun événement disponible pour le moment.</p>
+    </ng-template>
+  </div>
+</section>

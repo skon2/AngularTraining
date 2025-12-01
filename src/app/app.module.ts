@@ -11,6 +11,7 @@ import {ListEventComponent} from './features/events/list-event/list-event.compon
 import {FormsModule} from '@angular/forms';
 import { EventsModule } from './features/events/events.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CardComponent } from './layout/card/card.component';
 
 
 @NgModule({
@@ -25,8 +26,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
-  ],
+    FormsModule,
+    CardComponent
+],
   providers: [],
   bootstrap: [AppComponent]
 })

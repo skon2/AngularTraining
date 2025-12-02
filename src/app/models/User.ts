@@ -1,19 +1,14 @@
 export class User {
-  id: number = 0;
-  firstName: string = '';
-  lastName: string = '';
-  email: string = '';
-  password: string = '';
-  adressee: {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  address: {
     street: string;
     city: string;
     state: string;
     zip: string;
-  } = {
-    street: '',
-    city: '',
-    state: '',
-    zip: ''
-  };
-  phones: string[] = [];
+  }
+  phones: string[];
 }

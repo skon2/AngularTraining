@@ -1,136 +1,52 @@
-<!-- Card Event -->
-<div *ngIf="!searchValue || e.title.toLowerCase().includes(searchValue.toLowerCase())">
 
-  <div class="card h-100 shadow-sm">
+  <!---Enhance search input and display data--->
+  <div  *ngIf="e.title===searchValue || searchValue==null">
+    <div class="card h-100 shadow-sm" ngHover>
+      <img src="{{e.imageUrl}}"
+           class="card-img-top img-fluid"
+           style="height: 200px; object-fit: cover;">
 
-    <!-- Image -->
-    <img [src]="e.imageUrl"
-         class="card-img-top img-fluid"
-         alt="Event Image" />
-
-    <div class="card-body">
-
-      <!-- Title -->
-      <h5 class="card-title" [ngStyle]="{'color': e.nbPlaces === 0 ? 'red' : 'green'}">
-        {{ e.title }}
-      </h5>
-
-      <!-- Price -->
-      <p class="text-muted">{{ e.price | currency:'USD' }}</p>
-
-      <!-- Location -->
-      <p>{{ e.location }}</p>
-
-      <!-- Remaining Places -->
-      <p class="fw-bold">Places left: {{ e.nbPlaces }}</p>
-
-      <!-- Description -->
-      <p>{{ e.description }}</p>
-
-      <!-- Date Badge -->
-      <span class="ms-2">{{ e.date | date:'mediumDate' }}</span>
-
-      <!-- ==================================== -->
-      <!-- ACTIONS CONTAINER -->
-      <!-- ==================================== -->
-      <div class="actions-container mt-3 d-flex flex-column gap-2">
-
-        <!-- BUY BUTTON -->
-        <button class="btn btn-sm btn-danger w-100"
-                [disabled]="e.nbPlaces === 0"
-                (click)="nbrPlaceDecr(e)">
-          🎟️ Buy Ticket
+      <div class="card-body">
+        <h5 class="card-title"
+            [ngStyle]="{'color':e.nbPlaces==0?'red':'green'}">
+          {{ e.title }}
+        </h5>
+        <p class="text-muted">{{e.price|euro}}</p>
+        <p>{{e.location|uppercase}}</p>
+        <p class="fw-bold">{{e.nbPlaces}}</p>
+        <p>{{ e.description }}</p>
+        <!-- Bouton Like -->
+        <button [ngClass]="{'btn':true,'btn-sm':true,
+                          'btn-danger':e.nblikes>=5,
+                          'btn-warning':e.nblikes<5}"
+                (click)="likeEvent(e)">
+          👍 Like {{e.nblikes}}
         </button>
 
-        <!-- LIKE / DISLIKE -->
-        <div class="interaction-buttons d-flex gap-2">
-          <button class="btn btn-sm"
-                  [ngClass]="e.nblikes >= 5 ? 'btn-danger' : 'btn-warning'"
-                  (click)="likeEvent(e)">
-            👍 Like {{ e.nblikes }}
-          </button>
-
-          <button class="btn btn-sm btn-secondary"
-                  (click)="dislikeEvent(e)">
-            👎 Dislike
-          </button>
-        </div>
-
-        <!-- FEEDBACK -->
-        <button class="btn btn-sm btn-primary w-100"
-                (click)="openFeedbackModal(e.id!)">
-          💬 Feedback
+        <button class="btn btn-sm btn-danger"
+                [disabled]="e.nbPlaces==0" (click)="nbrPlaceDecr(e)" ><!--Property Binding--->
+          buy ticket
         </button>
-
-        <!-- MANAGEMENT -->
-        <div class="management-buttons d-flex flex-column gap-1">
-          <button class="btn btn-sm btn-info w-100"
-                  [routerLink]="['/events/edit', e.id]">
-            ✏️ Modifier
-          </button>
-
-          <button class="btn btn-sm btn-danger w-100"
-                  (click)="deleteEvent(e.id)">
-            🗑 Supprimer
-          </button>
-        </div>
-
-        <!-- DETAILS LINK -->
-        <a [routerLink]="['./details', e.id]" class="details-link text-center mt-2">
-          → More Details
+        <!--exercice: pipe date--->
+        <span class="ms-2">{{ e.date }}</span>
+        <a [routerLink]="['./details',e.id]">
+          more details
         </a>
-
       </div>
-      <!-- END ACTIONS -->
+          <button class="btn btn-sm btn-outline-danger ms-2"
+        (click)="deleteEvent(e.id)" *ngIf="isAdmin()">
+  🗑 Delete
+</button>
 
-    </div>
+<button class="btn btn-primary btn-sm" (click)="editEvent(e)" *ngIf="isAdmin()">
+  ✏️ Edit
+</button>
+<div  class="card h-100 shadow-sm">
+<button class="btn btn-primary btn-sm mt-2"
+        [routerLink]="['./add', e.id]">
+  💬 Commenter
+</button>
+
+
+
   </div>
-
-  <!-- FEEDBACK MODAL -->
-  <div class="modal fade" id="feedbackModal{{e.id}}" tabindex="-1">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title">Laisser un Feedback</h5>
-          <button class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-
-        <div class="modal-body">
-
-          <!-- Star Rating -->
-          <label class="mb-2">Note</label>
-          <div class="star-rating mb-2">
-            <span *ngFor="let star of [1,2,3,4,5]"
-                  class="star"
-                  [class.filled]="star <= (hoverRating || feedback.rate)"
-                  (click)="setRating(star)"
-                  (mouseenter)="hoverRating = star"
-                  (mouseleave)="hoverRating = 0">
-              {{ (hoverRating >= star || feedback.rate >= star) ? '★' : '☆' }}
-            </span>
-          </div>
-
-          <label class="mt-2">Commentaire</label>
-          <textarea class="form-control"
-                    rows="3"
-                    [(ngModel)]="feedback.content"
-                    placeholder="Partagez votre expérience..."></textarea>
-
-        </div>
-
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">
-            Annuler
-          </button>
-          <button class="btn btn-primary"
-                  (click)="submitFeedback(e.id!)">
-            Envoyer
-          </button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</div>

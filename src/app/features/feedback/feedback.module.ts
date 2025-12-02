@@ -3,22 +3,25 @@ import { CommonModule } from '@angular/common';
 
 import { FeedbackRoutingModule } from './feedback-routing.module';
 import { FeedbackComponent } from './feedback.component';
-import { FeedbackListComponent } from './feedback-list/feedback-list.component';
-import { FeedbackAddComponent } from './feedback-add/feedback-add.component';
-import { FormsModule } from '@angular/forms';  // <-- import this
-
+import { FormfeedbackComponent } from './formfeedback/formfeedback.component';
+import { FormsModule } from '@angular/forms';
+import { HistoriquefeedbacksComponent } from './historiquefeedbacks/historiquefeedbacks.component';
+import { UpdateComponent } from './update/update.component';
 
 
 @NgModule({
   declarations: [
     FeedbackComponent,
-    FeedbackListComponent,
-    FeedbackAddComponent
+    FormfeedbackComponent,
+    HistoriquefeedbacksComponent,
+    UpdateComponent
+  
+    
   ],
   imports: [
     CommonModule,
     FeedbackRoutingModule,
-    FormsModule  
+    FormsModule
   ]
 })
 export class FeedbackModule { }

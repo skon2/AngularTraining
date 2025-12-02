@@ -1,22 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // ✅ Import this
+
 import { UsersRoutingModule } from './users-routing.module';
-import { ReactiveFormsModule } from '@angular/forms'; // ✅ Important
 import { UsersComponent } from './users.component';
 import { RegisterComponent } from './register/register.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent,
+
   ],
   imports: [
     CommonModule,
-    FormsModule,          // ✅ Add here
-    ReactiveFormsModule,  
-    UsersRoutingModule
+    UsersRoutingModule,
+    //module required to implement the form in the registerComponent
+    ReactiveFormsModule
   ]
 })
 export class UsersModule { }

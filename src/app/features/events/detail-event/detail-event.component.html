@@ -1,64 +1,60 @@
-<div class="event-detail-container" *ngIf="event">
-  <div class="event-card">
-    <!-- Event Image -->
-    <div class="event-image">
-      <img [src]="event.imageUrl" [alt]="event.title" />
+<div class="event-detail-container" *ngIf="currentEvent; else notFound">
+  <div class="event-card shadow-sm p-3 rounded">
+
+    <div class="event-image mb-3 text-center">
+      <img
+        [src]="currentEvent.imageUrl || 'assets/default-event.jpg'"
+        [alt]="currentEvent.title"
+        class="img-fluid rounded"
+        style="max-height: 400px; object-fit: cover;"
+      />
     </div>
 
-    <!-- Event Info -->
     <div class="event-info">
-      <h1 class="event-title">{{ event.title }}</h1>
-      <p class="event-description">{{ event.description }}</p>
+      <h2 class="event-title mb-2">{{ currentEvent.title }}</h2>
+      <p class="event-description mb-3">{{ currentEvent.description }}</p>
 
-      <div class="event-meta">
-        <p><i class="bi bi-calendar-event"></i><strong>Date :</strong> {{ event.date | date: 'fullDate' }}</p>
-        <p><i class="bi bi-geo-alt"></i><strong>Lieu :</strong> {{ event.location }}</p>
-        <p><i class="bi bi-cash-coin"></i><strong>Prix :</strong> {{ event.price }} DT</p>
-        <p><i class="bi bi-people"></i><strong>Places disponibles :</strong> {{ event.nbPlaces }}</p>
-      </div>
-
-      <!-- Event Actions -->
-      <div class="event-actions">
-        <button
-          class="btn-primary"
-          [disabled]="event.nbPlaces === 0"
-          (click)="nbPlace(event)">
-          🎟️ Buy Ticket
-        </button>
-        <button class="btn-outline-secondary like-btn" [class.liked]="event.nblikes">
-          ❤️ {{ event.nblikes }}
-        </button>
-      </div>
-
-      <a routerLink="/events" class="back-link">⬅ Retour à la liste</a>
-    </div>
-
-    <!-- Feedback Section -->
-    <div class="feedbacks-section" *ngIf="feedbacks.length > 0">
-      <h3>💬 Feedbacks</h3>
-      <div *ngFor="let fb of feedbacks" class="feedback-card">
-        <p><strong>Utilisateur :</strong> {{ fb.idUser }}</p>
-        <p><strong>Note :</strong> 
-          <span *ngFor="let star of [1,2,3,4,5]" 
-                [ngClass]="star <= fb.rate ? 'text-danger' : 'text-muted'">
-            ★
+      <div class="event-meta d-flex flex-column gap-2">
+        <p><i class="bi bi-calendar-event me-2"></i> {{ currentEvent.date | date:'fullDate' }}</p>
+        <p><i class="bi bi-geo-alt me-2"></i> {{ currentEvent.location }}</p>
+        <p><i class="bi bi-cash-coin me-2"></i> {{ currentEvent.price }} DT</p>
+        <p>
+          <i class="bi bi-people me-2"></i>
+          <strong>Places :</strong>
+          <span
+            class="badge"
+            [ngClass]="{
+              'bg-success': currentEvent.nbPlaces > 0,
+              'bg-danger': currentEvent.nbPlaces === 0
+            }"
+          >
+            {{ currentEvent.nbPlaces > 0 ? currentEvent.nbPlaces + ' disponibles' : 'Complet' }}
           </span>
         </p>
-        
-        <p><strong>Commentaire :</strong> {{ fb.content || 'Aucun commentaire' }}</p>
-        <p><em>{{ fb.date | date:'mediumDate' }}</em></p>
-        <hr>
+        <p>
+          <i class="bi bi-heart-fill text-danger me-2"></i>
+          {{ currentEvent.nblikes }} J’aime
+        </p>
       </div>
     </div>
 
-    <div *ngIf="feedbacks.length === 0" class="no-feedback">
-      <p>Aucun feedback pour cet événement.</p>
+    <!-- 🔹 Boutons d’action -->
+    <div class="event-actions mt-3 d-flex gap-2">
+      <button class="btn btn-primary" [disabled]="currentEvent.nbPlaces === 0">
+        Réserver
+      </button>
+      <button class="btn btn-outline-secondary">
+        Partager
+      </button>
     </div>
+
   </div>
 </div>
 
-<!-- Not Found Section -->
-<div *ngIf="!event" class="not-found">
-  <h2>⚠️ Événement introuvable</h2>
-  <a routerLink="/" class="back-link">Retour</a>
-</div>
+<!-- 🔹 Message si aucun événement trouvé -->
+<ng-template #notFound>
+  <div class="not-found text-center p-5">
+    <h3>🚫 Événement introuvable</h3>
+    <p>Vérifie l’identifiant ou retourne à la liste des événements.</p>
+  </div>
+</ng-template>

@@ -1,9 +1,8 @@
-export interface Feedback {
-    id?: number;
-    idUser: number;
-    idEvent: number;
-    content: string;
-    rate: number;
-    date: Date;
-  }
-  
+export interface FeedBack {
+  id?: number;
+  message: string;
+  rate: number;
+  date?: string;
+  user?: any;
+  event?: any;
+}

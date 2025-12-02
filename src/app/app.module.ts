@@ -9,10 +9,8 @@ import { HomeComponent } from './layout/home/home.component';
 import { NotFoundComponent } from './layout/not-found/not-found.component';
 import {ListEventComponent} from './features/events/list-event/list-event.component';
 import {FormsModule} from '@angular/forms';
-import { EventsModule } from './features/events/events.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CardComponent } from './layout/card/card.component';
-
 
 @NgModule({
   declarations: [
@@ -20,13 +18,14 @@ import { CardComponent } from './layout/card/card.component';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
+    HttpClientModule,
     CardComponent
 ],
   providers: [],

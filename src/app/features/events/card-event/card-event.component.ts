@@ -1,127 +1,124 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Eventy } from '../../../models/eventy';
-import { Feedback } from '../../../models/feedback';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Eventy} from '../../../models/eventy';
+import { ActivatedRoute } from '@angular/router';
+import { EventsService } from '../../../shared/data/events.service';
+import { LoginService } from '../../../shared/data/login.service';
 import { FeedbackService } from '../../../shared/data/feedback.service';
-import { NgForm } from '@angular/forms';
+import { FeedBack } from '../../../models/feedback';
 
-declare var bootstrap: any;
-
+declare var bootstrap:any;
 @Component({
   selector: 'app-card-event',
   templateUrl: './card-event.component.html',
-  styleUrls: ['./card-event.component.css']
+  styleUrl: './card-event.component.css'
 })
 export class CardEventComponent {
+    constructor(private route: ActivatedRoute,
+                private eventService:EventsService, private login:LoginService, private feedbackService: FeedbackService) {
+    }
+    eventy: Eventy = new Eventy();
+isUpdate: boolean = false;
+events: Eventy[] = [];  // ← initialisé à un tableau vide pour éviter les erreurs
 
-  @Input() e!: Eventy;
-  @Input() searchValue!: string;
+  searchValue: string;
+  listEvents:Eventy[];
+  @Input() e:Eventy;
+  @Output() notificationLike:EventEmitter<Eventy>
+    = new EventEmitter();
+  likeEvent(e:Eventy) {
+    this.notificationLike.emit(e);
+  }
 
-  @Output() notificationLike = new EventEmitter<Eventy>();
-  @Output() notificationDelete = new EventEmitter<number>();
 
-  hoverRating = 0;
+    nbrPlaceDecr(e:Eventy){
+    e.nbPlaces --
+    this.eventService.updateEvent(e.id,e).subscribe()
+  }
+  //Marwa
+  nbrLike(e:Eventy){
+    e.nblikes ++
+    this.eventService.updateEvent(e.id,e).subscribe()
 
-  // Feedback model
-  feedback: Feedback = {
-    idUser: 1,  // replace with the real logged-in user id
-    idEvent: 0,
-    content: '',
-    rate: 1,
-    date: new Date()
+  }
+  deleteEvent(id: number) {
+    this.eventService.deleteEvent(id).subscribe(() => {
+      this.listEvents = this.listEvents.filter(e => e.id !== id);
+    });
+ 
+}
+
+
+
+editEvent(event: Eventy) {
+  this.eventy = event;
+}
+
+update() {
+  this.eventService.updateEvent(this.eventy.id, this.eventy)
+    .subscribe(() => {
+      alert("Updated!");
+    });
+}
+
+  isClient(): boolean {
+  return this.login.isClient();
+}
+
+
+  isAdmin(): boolean {
+  return this.login.isAdmin();
+}
+  selectedEvent!: Eventy;
+  rating = 0;
+  stars = [1,2,3,4,5];
+  comment = '';
+
+
+
+
+
+  // Choisir rating
+  setRating(r: number) {
+    this.rating = r;
+  }
+
+
+openCommentModal(event: Eventy) {
+  this.selectedEvent = event; // ← définit l'événement sélectionné
+  setTimeout(() => {
+    const modal = new bootstrap.Modal(document.getElementById('commentModal' + event.id));
+    modal.show();
+  }, 0);
+}
+
+submitComment(event: Eventy) {
+  if (!this.comment || this.rating === 0) {
+    alert("Veuillez donner une note et un commentaire.");
+    return;
+  }
+
+  const feedback = {
+    message: this.comment,
+    rate: this.rating
   };
 
-  constructor(private http: HttpClient, private fbService: FeedbackService) {}
+  this.feedbackService.addFeedback(event.id, feedback).subscribe({
+    next: () => {
+      alert('Commentaire ajouté !');
+      this.comment = '';
+      this.rating = 0;
 
-  // -----------------------
-  // LIKE / DISLIKE
-  // -----------------------
-  likeEvent(e: Eventy) {
-    e.nblikes++;
-    this.http.put(`http://localhost:8088/api/events/${e.id}/like`, {}).subscribe();
-    this.notificationLike.emit(e);
-  }
-
-  dislikeEvent(e: Eventy) {
-    if (e.nblikes > 0) e.nblikes--;
-    this.http.put(`http://localhost:8088/api/events/${e.id}/dislike`, {}).subscribe();
-    this.notificationLike.emit(e);
-  }
-
-  // -----------------------
-  // BUY TICKET
-  // -----------------------
-  nbrPlaceDecr(e: Eventy) {
-    if (e.nbPlaces > 0) e.nbPlaces--;
-  }
-
-  // -----------------------
-  // DELETE EVENT
-  // -----------------------
-  deleteEvent(id?: number) {
-    if (!id) return;
-    if (!confirm("Voulez-vous vraiment supprimer cet événement ?")) return;
-    this.notificationDelete.emit(id);
-  }
-
-  // -----------------------
-  // OPEN FEEDBACK MODAL
-  // -----------------------
-  openFeedbackModal(idEvent: number) {
-    this.feedback.idEvent = idEvent;
-
-    setTimeout(() => {
-      const modalEl = document.getElementById('feedbackModal' + idEvent);
-      if (!modalEl) return;
-
-      const modal = new bootstrap.Modal(modalEl);
-      modal.show();
-
-      // Reset feedback when modal closes
-      modalEl.addEventListener('hidden.bs.modal', () => {
-        this.feedback.content = '';
-        this.feedback.rate = 1;
-      });
-    }, 0);
-  }
-
-  setRating(rating: number) {
-    this.feedback.rate = rating;
-  }
-
-  // -----------------------
-  // SUBMIT FEEDBACK
-  // -----------------------
-  submitFeedback(idEvent: number) {
-    if (!this.feedback.content || this.feedback.content.trim() === '') {
-      alert('Veuillez saisir un commentaire.');
-      return;
+      const modalEl = document.getElementById('commentModal' + event.id);
+      const modal = bootstrap.Modal.getInstance(modalEl);
+      modal?.hide();
+    },
+    error: err => {
+      console.error("Erreur ajout feedback :", err);
+      alert("Erreur lors de l'ajout du commentaire.");
     }
+  });
+}
 
-    this.feedback.idEvent = idEvent;
-    this.feedback.date = new Date();
 
-    this.fbService.addFeedback(this.feedback).subscribe({
-      next: (res) => {
-        alert("Feedback envoyé !");
-        // Reset feedback
-        this.feedback = {
-          idUser: 1,
-          idEvent,
-          content: '',
-          rate: 1,
-          date: new Date()
-        };
 
-        // Close modal
-        const modalEl = document.getElementById('feedbackModal' + idEvent);
-        const modal = bootstrap.Modal.getInstance(modalEl);
-        modal?.hide();
-      },
-      error: (err) => {
-        console.error('Error sending feedback:', err);
-        alert("Erreur lors de l'envoi du feedback");
-      }
-    });
-  }
 }

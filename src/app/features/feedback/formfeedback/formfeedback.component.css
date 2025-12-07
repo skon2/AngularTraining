@@ -1,24 +1,310 @@
+/* ===== FEEDBACK FORM - DESIGN MODERNE ===== */
+
 .feedback-container {
-  max-width: 450px;
-  margin: 40px auto;
-  padding: 25px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.feedback-container:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Titre du formulaire */
+.feedback-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 32px 0;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
+}
+
+/* Rating stars - Modern design */
+.rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+  border-radius: 16px;
+  border: 2px solid #e5e7eb;
 }
 
 .rating span {
-  font-size: 40px;
+  font-size: 48px;
   cursor: pointer;
-  color: #ccc;
-  transition: 0.2s;
+  color: #d1d5db;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  position: relative;
+}
+
+.rating span:hover {
+  color: #fbbf24;
+  transform: scale(1.2) rotate(-10deg);
 }
 
 .rating span.selected {
-  color: gold;
+  color: #f59e0b;
+  transform: scale(1.15);
+  animation: starPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-textarea {
-  height: 120px;
+@keyframes starPop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3) rotate(15deg);
+  }
+  100% {
+    transform: scale(1.15);
+  }
+}
+
+/* Textarea - Modern style */
+textarea.form-control {
+  height: 140px;
   resize: none;
+  padding: 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  font-size: 1rem;
+  color: #374151;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+textarea.form-control:hover {
+  border-color: #d1d5db;
+  background: #ffffff;
+}
+
+textarea.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  outline: none;
+  background: #ffffff;
+}
+
+textarea.form-control::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+/* Button - Premium style */
+.btn.btn-success {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn.btn-success::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn.btn-success:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn.btn-success:hover::before {
+  left: 100%;
+}
+
+.btn.btn-success:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn.btn-success:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+/* Spacing utilities */
+.mt-3 {
+  margin-top: 24px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .feedback-container {
+    margin: 40px 20px;
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+
+  .feedback-container h2 {
+    font-size: 1.75rem;
+    margin-bottom: 28px;
+  }
+
+  .rating {
+    gap: 6px;
+    padding: 16px;
+    margin-bottom: 28px;
+  }
+
+  .rating span {
+    font-size: 42px;
+  }
+
+  textarea.form-control {
+    height: 120px;
+    padding: 14px;
+  }
+
+  .btn.btn-success {
+    padding: 14px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .feedback-container {
+    margin: 30px 16px;
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .feedback-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+
+  .rating {
+    gap: 4px;
+    padding: 12px;
+    margin-bottom: 24px;
+  }
+
+  .rating span {
+    font-size: 36px;
+  }
+
+  textarea.form-control {
+    height: 100px;
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .btn.btn-success {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Animation d'entrée */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.feedback-container {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+/* Animation pour le rating */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rating {
+  animation: slideDown 0.6s ease-out 0.2s both;
+}
+
+/* Animation pour le textarea */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+textarea.form-control {
+  animation: fadeIn 0.6s ease-out 0.3s both;
+}
+
+/* Animation pour le bouton */
+.btn.btn-success {
+  animation: fadeIn 0.6s ease-out 0.4s both;
+}
+
+/* Effet de focus sur tout le container */
+.feedback-container:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+}
+
+/* Style pour les étoiles non sélectionnées au hover */
+.rating:hover span:not(.selected) {
+  color: #e5e7eb;
+}
+
+.rating span:hover ~ span {
+  color: #d1d5db;
+}
+
+/* Indicateur de caractères (optionnel) */
+.feedback-container::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  margin-top: 24px;
+  border-radius: 2px;
+  opacity: 0.2;
 }

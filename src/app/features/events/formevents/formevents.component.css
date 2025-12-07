@@ -1,87 +1,420 @@
+/* ===== ADD EVENT FORM - DESIGN MODERNE ===== */
 
+/* Container principal */
 .simple-form-container {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 30px;
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  animation: fadeInScale 0.5s ease-out;
 }
 
-/* Titre */
+.simple-form-container:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Titre du formulaire */
 .simple-form-container h2 {
   text-align: center;
-  margin-bottom: 25px;
-  color: #007bff;
-  font-weight: 600;
+  margin-bottom: 32px;
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
 }
 
 /* Style du formulaire */
 .simple-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 24px;
 }
 
+/* Labels */
 .simple-form label {
-  font-weight: 600;
-  color: #333;
+  font-weight: 700;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+.simple-form label::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+/* Inputs et Textarea */
 .simple-form input,
 .simple-form textarea {
-  padding: 10px 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 15px;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
+  padding: 14px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #374151;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  width: 100%;
+}
+
+.simple-form input::placeholder,
+.simple-form textarea::placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.simple-form input:hover,
+.simple-form textarea:hover {
+  border-color: #d1d5db;
+  background: #ffffff;
 }
 
 .simple-form input:focus,
 .simple-form textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
   outline: none;
+  background: #ffffff;
+  transform: translateY(-1px);
 }
 
 .simple-form textarea {
   resize: vertical;
-  min-height: 80px;
+  min-height: 100px;
+  line-height: 1.6;
 }
 
-/* Bouton */
+/* Input states - Valid */
+.simple-form input.ng-valid.ng-touched,
+.simple-form textarea.ng-valid.ng-touched {
+  border-color: #10b981;
+  background: #f0fdf4;
+}
+
+.simple-form input.ng-valid.ng-touched:focus,
+.simple-form textarea.ng-valid.ng-touched:focus {
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+/* Input states - Invalid */
+.simple-form input.ng-invalid.ng-touched,
+.simple-form textarea.ng-invalid.ng-touched {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.simple-form input.ng-invalid.ng-touched:focus,
+.simple-form textarea.ng-invalid.ng-touched:focus {
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+/* Messages d'erreur */
+.error {
+  margin-top: -16px;
+  animation: slideDown 0.3s ease-out;
+}
+
+.error small {
+  color: #ef4444;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #fef2f2;
+  border-radius: 8px;
+  border-left: 3px solid #ef4444;
+  margin-top: 8px;
+}
+
+.error small::before {
+  content: '⚠️';
+  font-size: 1rem;
+}
+
+/* Bouton Submit - Style premium */
 .btn {
-  background-color: #007bff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 12px;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 16px 24px;
+  border-radius: 14px;
+  font-size: 1.05rem;
+  font-weight: 700;
   cursor: pointer;
-  font-weight: 500;
-  
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin-top: 8px;
 }
 
-.btn:hover {
-  background-color: #0056b3;
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
 }
 
-/* Responsive */
-@media (max-width: 480px) {
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+.btn:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn:disabled {
+  background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+/* Séparateur HR */
+hr {
+  margin: 60px auto;
+  max-width: 600px;
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+}
+
+/* Groupes de champs (optionnel) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Input avec icônes (optionnel) */
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon input {
+  padding-left: 45px;
+}
+
+.input-with-icon::before {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #9ca3af;
+  z-index: 1;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
   .simple-form-container {
-    padding: 20px;
+    margin: 40px 20px;
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+
+  .simple-form-container h2 {
+    font-size: 1.75rem;
+    margin-bottom: 28px;
+  }
+
+  .simple-form {
+    gap: 20px;
+  }
+
+  .simple-form input,
+  .simple-form textarea {
+    padding: 12px 14px;
+    font-size: 0.95rem;
   }
 
   .btn {
-    font-size: 15px;
+    padding: 14px 20px;
+    font-size: 1rem;
   }
 }
-.error small {
-  color: red;
-  display: block;
-  margin-top: 3px;
+
+/* Responsive - Mobile */
+@media (max-width: 576px) {
+  .simple-form-container {
+    margin: 30px 16px;
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .simple-form-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+
+  .simple-form {
+    gap: 18px;
+  }
+
+  .simple-form label {
+    font-size: 0.9rem;
+  }
+
+  .simple-form input,
+  .simple-form textarea {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .simple-form textarea {
+    min-height: 90px;
+  }
+
+  .error small {
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+
+  hr {
+    margin: 40px auto;
+  }
 }
-input.ng-invalid.ng-touched,
-textarea.ng-invalid.ng-touched {
-  border-color: red;
+
+/* Animations */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus within effect */
+.simple-form-container:focus-within {
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+}
+
+/* Animation des champs au chargement */
+.simple-form > * {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+.simple-form > *:nth-child(1) { animation-delay: 0.1s; }
+.simple-form > *:nth-child(2) { animation-delay: 0.15s; }
+.simple-form > *:nth-child(3) { animation-delay: 0.2s; }
+.simple-form > *:nth-child(4) { animation-delay: 0.25s; }
+.simple-form > *:nth-child(5) { animation-delay: 0.3s; }
+.simple-form > *:nth-child(6) { animation-delay: 0.35s; }
+.simple-form > *:nth-child(7) { animation-delay: 0.4s; }
+.simple-form > *:nth-child(8) { animation-delay: 0.45s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Input number - Remove arrows (optionnel) */
+.simple-form input[type="number"]::-webkit-inner-spin-button,
+.simple-form input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.simple-form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Success state after submit (optionnel) */
+.form-success {
+  background: #f0fdf4;
+  border: 2px solid #10b981;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+  color: #065f46;
+  font-weight: 600;
+  margin-top: 20px;
+  animation: slideDown 0.4s ease-out;
+}
+
+.form-success::before {
+  content: '✅';
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Loading state sur le bouton (optionnel) */
+.btn.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.btn.loading::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
 }

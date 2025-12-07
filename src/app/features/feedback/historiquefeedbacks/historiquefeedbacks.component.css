@@ -1,12 +1,373 @@
-.card-title {
-  font-weight: bold;
-  font-size: 1.2rem;
+/* ===== FEEDBACK LIST - DESIGN MODERNE ===== */
+
+/* Container général */
+.feedback-container {
+  margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
 }
 
-.card-text {
-  font-size: 0.95rem;
+/* Titre principal */
+.feedback-container h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.5px;
+  text-align: center;
 }
 
-.card-footer button {
-  width: 48%;
+/* Alert info - Style moderne */
+.alert.alert-info {
+  background: linear-gradient(135deg, #e0f2fe 0%, #ddd6fe 100%);
+  border: none;
+  border-left: 4px solid #667eea;
+  border-radius: 16px;
+  padding: 20px 24px;
+  color: #374151;
+  font-weight: 500;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+}
+
+/* Row spacing */
+.row {
+  gap: 0;
+}
+
+.col-12 {
+  margin-bottom: 24px;
+}
+
+/* Feedback card - Layout horizontal moderne */
+.feedback-card {
+  display: flex;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.feedback-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.feedback-card:hover::before {
+  transform: scaleY(1);
+}
+
+.feedback-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-color: #d0d0d0;
+}
+
+/* Image à gauche - Style élégant */
+.feedback-card img {
+  width: 200px;
+  min-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.feedback-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Contenu à droite */
+.feedback-content {
+  padding: 24px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* Section info */
+.feedback-content > div:first-child {
+  flex: 1;
+}
+
+/* Titre du feedback */
+.feedback-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+/* Message du feedback */
+.feedback-message {
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Note avec étoiles */
+.feedback-rate {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #f59e0b;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  padding: 8px 16px;
+  border-radius: 12px;
+  margin-bottom: 0;
+  width: fit-content;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+}
+
+/* Footer avec boutons */
+.feedback-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid #f3f4f6;
+}
+
+/* Boutons d'action - Style moderne */
+.btn-feedback-edit,
+.btn-feedback-delete {
+  font-weight: 600;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-feedback-edit {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-feedback-edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.btn-feedback-edit:active {
+  transform: translateY(0);
+}
+
+.btn-feedback-delete {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-feedback-delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.btn-feedback-delete:active {
+  transform: translateY(0);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 992px) {
+  .feedback-card img {
+    width: 180px;
+    min-width: 180px;
+    height: 180px;
+  }
+
+  .feedback-content {
+    padding: 20px 24px;
+  }
+
+  .feedback-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .feedback-container {
+    margin-top: 2rem;
+    padding: 0 16px;
+  }
+
+  .feedback-container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .feedback-card {
+    flex-direction: column;
+    border-radius: 16px;
+  }
+
+  .feedback-card img {
+    width: 100%;
+    min-width: 100%;
+    height: 220px;
+  }
+
+  .feedback-content {
+    padding: 20px;
+  }
+
+  .feedback-title {
+    font-size: 1.25rem;
+  }
+
+  .feedback-message {
+    font-size: 0.95rem;
+    -webkit-line-clamp: 4;
+  }
+
+  .feedback-footer {
+    justify-content: stretch;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-feedback-edit,
+  .btn-feedback-delete {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Responsive - Small mobile */
+@media (max-width: 576px) {
+  .feedback-container h2 {
+    font-size: 1.75rem;
+  }
+
+  .feedback-card {
+    border-radius: 12px;
+  }
+
+  .feedback-card img {
+    height: 200px;
+  }
+
+  .feedback-content {
+    padding: 16px;
+  }
+
+  .feedback-title {
+    font-size: 1.15rem;
+  }
+
+  .feedback-message {
+    font-size: 0.9rem;
+  }
+
+  .feedback-rate {
+    font-size: 1rem;
+    padding: 6px 14px;
+  }
+
+  .btn-feedback-edit,
+  .btn-feedback-delete {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Animations d'entrée */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feedback-card {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+/* Stagger animation pour plusieurs cards */
+.col-12:nth-child(1) .feedback-card { animation-delay: 0.1s; }
+.col-12:nth-child(2) .feedback-card { animation-delay: 0.2s; }
+.col-12:nth-child(3) .feedback-card { animation-delay: 0.3s; }
+.col-12:nth-child(4) .feedback-card { animation-delay: 0.4s; }
+.col-12:nth-child(5) .feedback-card { animation-delay: 0.5s; }
+.col-12:nth-child(6) .feedback-card { animation-delay: 0.6s; }
+
+/* Animation du titre */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feedback-container h2 {
+  animation: slideDown 0.6s ease-out;
+}
+
+/* Empty state animation */
+.alert.alert-info {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Hover effect sur l'image */
+.feedback-card img {
+  filter: brightness(0.95);
+}
+
+.feedback-card:hover img {
+  filter: brightness(1);
+}
+
+/* Loading state (optionnel) */
+.feedback-card.loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Effet de focus sur les boutons */
+.btn-feedback-edit:focus,
+.btn-feedback-delete:focus {
+  outline: 3px solid rgba(59, 130, 246, 0.3);
+  outline-offset: 2px;
+}
+
+.btn-feedback-delete:focus {
+  outline-color: rgba(239, 68, 68, 0.3);
 }

@@ -1,59 +1,286 @@
+/* ===== SIDEBAR FILTERS - DESIGN MODERNE ===== */
+
 .sidebar {
-    width: 280px;
-    background-color: #f8f9fa;
-    border-right: 1px solid #dee2e6;
-    height: 100vh;
-    padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e8e8e8;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  transition: all 0.3s ease;
 }
 
+.sidebar:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Header de la sidebar */
 .sidebar-header {
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #e9ecef;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.sidebar-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .sidebar-header h3 {
-    margin: 0;
-    color: #333;
-    font-size: 1.3rem;
+  margin: 0;
+  font-size: 1.75rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 
+/* Content de la sidebar */
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Filter group */
 .filter-group {
-    margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .filter-group h4 {
-    margin: 0 0 12px 0;
-    color: #555;
-    font-size: 1rem;
-    font-weight: 600;
+  font-size: 1rem;
+  color: #1a1a1a;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+.filter-group h4::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+/* Select styling - Modern */
 .filter-group select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: white;
-    font-size: 0.9rem;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: #374151;
+  background: #f9fafb;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-weight: 500;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667eea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
 }
 
-.apply-btn, .reset-btn {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 10px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1rem;
+.filter-group select:hover {
+  border-color: #d1d5db;
+  background: #ffffff;
+}
+
+.filter-group select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  outline: none;
+  background: #ffffff;
+}
+
+.filter-group select:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+  opacity: 0.6;
+  border-color: #e5e7eb;
+}
+
+.filter-group small {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-style: italic;
+  margin-top: -4px;
+}
+
+/* Buttons - Modern style */
+.apply-btn,
+.reset-btn {
+  width: 100%;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
 .apply-btn {
-    background-color: #007bff;
-    color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin-top: 12px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.apply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.apply-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
 }
 
 .reset-btn {
-    background-color: #6c757d;
-    color: white;
+  background: #f3f4f6;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+}
+
+.reset-btn:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
+  transform: translateY(-2px);
+}
+
+.reset-btn:active {
+  transform: translateY(0);
+}
+
+/* Scrollbar styling - Modern */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #f9fafb;
+  border-radius: 10px;
+  margin: 8px 0;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+  border: 2px solid #f9fafb;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5568d3 0%, #63408b 100%);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .sidebar {
+    position: static;
+    margin-bottom: 24px;
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .sidebar-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .sidebar-content {
+    gap: 20px;
+  }
+
+  .filter-group select {
+    padding: 10px 14px;
+    padding-right: 36px;
+  }
+
+  .apply-btn,
+  .reset-btn {
+    padding: 12px 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .sidebar-header {
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .sidebar-content {
+    gap: 16px;
+  }
+}
+
+/* Animation pour l'apparition */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.sidebar {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+/* Animation stagger pour les filter groups */
+.filter-group {
+  animation: fadeIn 0.5s ease-out both;
+}
+
+.filter-group:nth-child(1) { animation-delay: 0.1s; }
+.filter-group:nth-child(2) { animation-delay: 0.2s; }
+.filter-group:nth-child(3) { animation-delay: 0.3s; }
+.filter-group:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

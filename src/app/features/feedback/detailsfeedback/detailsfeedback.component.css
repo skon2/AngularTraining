@@ -1,3 +1,144 @@
+.feedback-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.title {
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+.no-feedback {
+  text-align: center;
+  padding: 25px;
+  background: #eef2f7;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #7f8c8d;
+}
+
+.no-feedback i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Card */
+.feedback-card {
+  display: flex;
+  gap: 20px;
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 15px;
+  transition: 0.3s ease;
+  align-items: center;
+}
+
+.feedback-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+/* User section */
+.user-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+  text-align: center;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+  margin-bottom: 10px;
+}
+
+.user-info h4 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.email {
+  font-size: 13px;
+  color: #7f8c8d;
+}
+
+/* Content */
+.feedback-content {
+  flex: 1;
+}
+
+.message {
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-style: italic;
+  color: #34495e;
+}
+
+.rating {
+  font-size: 17px;
+  font-weight: 600;
+  color: #e4b000;
+  margin-bottom: 5px;
+}
+
+.rating i {
+  margin-right: 3px;
+}
+
+.date {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+.related-events {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.event-horizontal-card {
+  display: flex;
+  min-width: 250px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.event-horizontal-card .event-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.event-horizontal-card .event-info {
+  padding: 10px;
+}
+
+.feedbacks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feedback-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  background: #f8f9fa;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 /* Card container */
 .card {
   border: none;
